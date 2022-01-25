@@ -21,13 +21,6 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: |
-        echo $(USE_CACHE)
-        echo '-----'
-        echo $(Agent.JobStatus)
-        echo '-----'
-        echo $(Build.Reason)
-
     - template: templates/install-dependencies.yml
       parameters:
         platform: ubuntu-latest

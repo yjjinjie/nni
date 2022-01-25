@@ -14,7 +14,7 @@ steps:
     path: cache-archive
     cacheHitVar: CACHE_HIT
   displayName: Download cache
-  condition: and(succeeded(), eq(variables['USE_CACHE'], 'true'))
+  condition: and(succeeded(), in(variables['USE_CACHE'], 'true', 'inexact'))
 
 - script: |
     python test/vso_tools/unpack_dependencies.py
