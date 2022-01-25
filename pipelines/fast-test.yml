@@ -8,10 +8,6 @@ schedules:
   branches:
     include: [ master ]
 
-variables:
-  BUILD_CACHE: "false"
-  USE_CACHE: "true"
-
 stages:
 - stage: cache
   condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['BUILD_CACHE'], 'true'))
