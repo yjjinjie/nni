@@ -1,17 +1,9 @@
-trigger: none
-pr: none
-schedules:
-- cron: "0 16 * * *"
-  branches:
-    include: [ master ]
-  always: true
-
 jobs:
 - job: ubuntu_latest
   pool:
     vmImage: ubuntu-latest
   steps:
-  - template: templates/cache-dependencies-template.yml
+  - template: templates/cache-platform-dependencies.yml
     parameters:
       platform: ubuntu-latest
 
@@ -19,7 +11,7 @@ jobs:
   pool:
     vmImage: ubuntu-18.04
   steps:
-  - template: templates/cache-dependencies-template.yml
+  - template: templates/cache-platform-dependencies.yml
     parameters:
       platform: ubuntu-legacy
 
@@ -27,7 +19,7 @@ jobs:
   pool:
     vmImage: windows-latest
   steps:
-  - template: templates/cache-dependencies-template.yml
+  - template: templates/cache-platform-dependencies.yml
     parameters:
       platform: windows
 
@@ -35,6 +27,6 @@ jobs:
   pool:
     vmImage: macOS-latest
   steps:
-  - template: templates/cache-dependencies-template.yml
+  - template: templates/cache-platform-dependencies.yml
     parameters:
       platform: macos

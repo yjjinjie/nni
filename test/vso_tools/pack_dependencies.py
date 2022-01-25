@@ -1,5 +1,5 @@
 """
-Create an archive in sys.argv[1], containing python-packages and node_modules.
+Create an archive containing python-packages and node_modules.
 Use unpack_dependencies.py to extract the archive.
 """
 
@@ -35,9 +35,6 @@ def main() -> None:
     archive.writestr('symlinks.json', json.dumps(symlinks, indent=4))
     archive.writestr('directories.json', json.dumps(list(empty_dirs), indent=4))
     archive.close()
-
-    assert Path(sys.argv[1]).is_dir()
-    shutil.move('cache.zip', sys.argv[1])
 
 if __name__ == '__main__':
     main()

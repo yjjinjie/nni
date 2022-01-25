@@ -12,6 +12,8 @@
 /ts/nni_manager/trial_jobs.json
 /test/ut/retiarii/_debug_graph_data.json
 /test/ut/retiarii/out.tmp
+/test/*.onnx
+/test/*.pth
 
 # Logs
 logs

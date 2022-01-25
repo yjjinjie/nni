@@ -112,10 +112,10 @@ def _setup():
         packages = _find_python_packages(),
         package_data = {
             'nni': _find_requirements_txt() + _find_default_config(),  # setuptools issue #1806
-            #'nni_node': _find_node_files()  # note: this does not work before building
+            'nni_node': _find_node_files()  # note: this does not work before building
         },
 
-        #data_files = _get_data_files(),
+        data_files = _get_data_files(),
 
         python_requires = '>=3.7',
         install_requires = _read_requirements_txt('dependencies/required.txt'),
@@ -153,7 +153,7 @@ def _find_python_packages():
     for dirpath, dirnames, filenames in os.walk('nni'):
         if '/__pycache__' not in dirpath and '/.mypy_cache' not in dirpath and '/default_config' not in dirpath:
             packages.append(dirpath.replace('/', '.'))
-    return sorted(packages) #+ ['nni_node']
+    return sorted(packages) + ['nni_node']
 
 def _find_requirements_txt():
     requirement_files = []
@@ -218,10 +218,10 @@ class Build(build):
         if not release:
             sys.exit('Please set environment variable "NNI_RELEASE=<release_version>"')
 
-        #check_jupyter_lab_version()
+        check_jupyter_lab_version()
 
-        #if os.path.islink('nni_node/main.js'):
-        #    sys.exit('A development build already exists. Please uninstall NNI and run "python3 setup.py clean --all".')
+        if os.path.islink('nni_node/main.js'):
+            sys.exit('A development build already exists. Please uninstall NNI and run "python3 setup.py clean --all".')
         open('nni/version.py', 'w').write(f"__version__ = '{release}'")
         super().run()
 
