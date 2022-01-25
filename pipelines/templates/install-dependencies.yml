@@ -1,8 +1,6 @@
 parameters:
 - name: platform
   type: string
-- name: useCache
-  type: boolean
 
 steps:
 - template: config-version.yml
@@ -16,7 +14,7 @@ steps:
     path: cache-archive
     cacheHitVar: CACHE_HIT
   displayName: Download cache
-  condition: and(succeeded(), ${{ parameters.useCache }})
+  condition: and(succeeded(), eq(variables['USE_CACHE'], 'true'))
 
 - script: |
     python test/vso_tools/unpack_dependencies.py
