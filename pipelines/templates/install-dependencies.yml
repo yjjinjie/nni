@@ -9,7 +9,7 @@ steps:
 
 - task: Cache@2
   inputs:
-    key: '"dependencies" | "${{ parameters.platform }}"'
+    key: '"dependencies" | "${{ parameters.platform }}" | "0"'
     restoreKeys: '"dependencies" | "${{ parameters.platform }}"'
     path: cache-archive
     cacheHitVar: CACHE_HIT
