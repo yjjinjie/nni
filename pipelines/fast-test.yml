@@ -15,7 +15,7 @@ stages:
   - template: templates/cache-dependencies.yml
 
 - stage: lint
-  dependsOn: []
+  condition: succeededOrFailed()
   jobs:
   - job: docs
     pool:
