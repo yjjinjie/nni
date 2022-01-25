@@ -13,7 +13,7 @@ steps:
   inputs:
     key: '"dependencies" | "${{ parameters.platform }}"'
     restoreKeys: '"dependencies" | "${{ parameters.platform }}"'
-    path: cache.zip
+    path: cache-archive
     cacheHitVar: CACHE_HIT
   displayName: Download cache
   condition: and(succeeded(), ${{ parameters.useCache }})

@@ -69,4 +69,4 @@ steps:
 - task: Cache@2
   inputs:
     key: '"dependencies" | "${{ parameters.platform }}" | "$(TIMESTAMP)"'
-    path: cache.zip
+    path: cache-archive
