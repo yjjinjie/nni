@@ -10,7 +10,7 @@ schedules:
 
 stages:
 - stage: cache
-  condition: or(eq(variables['Build.Reason'], 'Schedule'), eq($(CREATE_CACHE), 'true'))
+  condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['CREATE_CACHE'], 'true'))
   jobs:
   - template: templates/cache-dependencies.yml
 
