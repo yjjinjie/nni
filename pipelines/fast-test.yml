@@ -10,9 +10,9 @@ schedules:
 
 stages:
 - stage: cache
+  condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['BUILD_CACHE'], 'true'))
   jobs:
   - template: templates/cache-dependencies.yml
-    condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['BUILD_CACHE'], 'true'))
 
 - stage: lint
   jobs:
