@@ -23,7 +23,7 @@ def main() -> None:
     print('All Python paths:')
     print('\n'.join(sys.path), flush=True)
 
-    extract_all(ZipFile('cache_archive/cache.zip'))
+    extract_all(ZipFile('cache-archive/cache.zip'))
     empty_dirs = json.loads(Path('directories.json').read_text())
     symlinks = json.loads(Path('symlinks.json').read_text())
     for dir_ in empty_dirs:

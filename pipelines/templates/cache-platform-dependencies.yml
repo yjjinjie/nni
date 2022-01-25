@@ -12,6 +12,11 @@ steps:
     python test/vso_tools/pip_use_prefix.py python-packages
   displayName: Prepare
 
+- task: Cache@2
+  inputs:
+    key: '"dependencies" | "${{ parameters.platform }}" | "$(TIMESTAMP)"'
+    path: cache-archive
+
 - script: |
     cp dependencies/recommended_legacy.txt dependencies/recommended.txt
   displayName: (legacy) Activate legacy dependencies
@@ -65,8 +70,3 @@ steps:
 - script: |
     python test/vso_tools/pack_dependencies.py
   displayName: Create cache archive
-
-- task: Cache@2
-  inputs:
-    key: '"dependencies" | "${{ parameters.platform }}" | "$(TIMESTAMP)"'
-    path: cache-archive

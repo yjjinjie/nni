@@ -18,8 +18,8 @@ def main() -> None:
     shutil.move('ts/nni_manager/node_modules', 'cache/nni-manager-dependencies')
     shutil.move('ts/webui/node_modules', 'cache/webui-dependencies')
 
-    Path('cache_archive').mkdir()
-    archive = ZipFile('cache_archive/cache.zip', 'w', ZIP_DEFLATED, compresslevel=9)
+    Path('cache-archive').mkdir()
+    archive = ZipFile('cache-archive/cache.zip', 'w', ZIP_DEFLATED, compresslevel=9)
     symlinks = {}
     empty_dirs = set()
     for file in sorted(cache.rglob('*')):
