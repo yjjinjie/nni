@@ -15,6 +15,7 @@ stages:
   - template: templates/cache-dependencies.yml
 
 - stage: lint
+  condition: ne(variables['Agent.JobStatus'], 'Failed')
   jobs:
   - job: docs
     pool:
